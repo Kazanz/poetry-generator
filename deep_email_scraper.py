@@ -1,12 +1,13 @@
 from bs4 import BeautifulSoup
 import requests
 import requests.exceptions
-from urllib.parse import urlsplit
+from urlparse import urlsplit
 from collections import deque
 import re
 
 # a queue of urls to be crawled
-new_urls = deque(['http://www.themoscowtimes.com/contact_us/index.php'])
+print "Enter website"
+new_urls = deque([raw_input()])
 
 # a set of urls that we have already crawled
 processed_urls = set()
@@ -28,6 +29,7 @@ while len(new_urls):
 
     # get url's content
     print("Processing %s" % url)
+    print(emails)
     try:
         response = requests.get(url)
     except (requests.exceptions.MissingSchema, requests.exceptions.ConnectionError):

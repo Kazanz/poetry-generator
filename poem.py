@@ -14,7 +14,7 @@ class bnfDictionary:
 				for syntax in lineSplit[1].split('|'):
 					self.grammar[lineSplit[0]].append(syntax)
 				#print(self.grammar[lineSplit[0]])
-				
+
 	def generate(self,key,num):
 		gram = self.grammar[key]
 		i = randint(0,len(gram)-1)
@@ -28,7 +28,7 @@ class bnfDictionary:
 				else:
 					string = string + self.generate(word,1) + " "
 		return string.replace('newline','')
-		
+
 	def generatePretty(self,key):
 		#tool = language_check.LanguageTool('en-US')
 		poem = self.generate(key,1)
@@ -51,11 +51,11 @@ class bnfDictionary:
 				capitalize = False
 			if isTitle:
 				mydate = datetime.datetime.now()
-				
-				newPoem = newPoem + "<h1>" + line + "</h1>\n<h2>by A Computer, %s</h2>\n"%mydate.strftime("%B %d %Y")
+
+				newPoem = newPoem + "<h1>" + line + "</h1>\n<h2>by Alan Witte</h2>\n"
 				isTitle = False
 			else:
-				if len(line) < 1:	
+				if len(line) < 1:
 					if isParagraph:
 						newPoem = newPoem + "</p>"
 					isParagraph = False
@@ -106,15 +106,15 @@ class bnfDictionary:
 						elif randint(0,20)<2:
 							newPoem = newPoem + line.replace('<br />',',<br />\n')
 						else:
-							newPoem = newPoem + line + "\n"				
+							newPoem = newPoem + line + "\n"
 				else:
 					newPoem = newPoem + line + "\n"
 		newPoem = newPoem.replace('..','.')
 		newPoem = newPoem.replace('?.','!')
 		newPoem = newPoem.replace('!.','?')
 		newPoem = newPoem.replace(' i ',' I ')
-		return newPoem
-	
+		return newPoem.replace('<p>','').replace('</p>','').replace("<br />", '').replace('<h1>','').replace('</h1>','').replace('<h2>','').replace('</h2>','')
+
 bnf = bnfDictionary('poems.bnf')
 if "mushy" in sys.argv[1]:
 	print(bnf.generatePretty('<mushypoem>'))
