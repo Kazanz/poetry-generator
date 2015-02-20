@@ -1,2 +1,4 @@
 .ropeproject
 *.pyc
+emails.json
+scraper_private.py
