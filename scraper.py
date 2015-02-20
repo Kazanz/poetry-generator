@@ -23,8 +23,6 @@ def get_emails(url):
             print link
             new_urls.add(link)
 
-    f = open('emails.json', 'w')
-
     for url in new_urls:
         response = requests.get(url)
         soup = BeautifulSoup(response.text)
@@ -40,12 +38,11 @@ def get_emails(url):
 
 url1 = raw_input()
 url2 = raw_input()
-emails = []
-emails.append(get_emails(url1))
+emails = {}
+emails.update(get_emails(url1))
 for i in range(1, 4):
-    emails.append(get_emails(url2.format(i)))
+    emails.update(get_emails(url2.format(i)))
 
 f = open('emails.json', 'w')
 f.write(json.dumps(emails))
 f.close()
-
