@@ -115,10 +115,16 @@ class bnfDictionary:
 		newPoem = newPoem.replace(' i ',' I ')
 		return newPoem.replace('<p>','').replace('</p>','').replace("<br />", '').replace('<h1>','').replace('</h1>','').replace('<h2>','').replace('</h2>','')
 
-bnf = bnfDictionary('poems.bnf')
-if "mushy" in sys.argv[1]:
-	print(bnf.generatePretty('<mushypoem>'))
-else:
-	print(bnf.generatePretty('<poem>'))
+        # poem_list = my_poem.replace(' a a', ' an a').split('\n')
+        # if len(poem_list) > 14:
+        #     poem_list = poem_list[:13]
+        # return "\n".join(poem_list)
+
+
+# bnf = bnfDictionary('poems.bnf')
+# if "mushy" in sys.argv[1]:
+# 	print(bnf.generatePretty('<mushypoem>'))
+# else:
+# 	print(bnf.generatePretty('<poem>'))
 
 
